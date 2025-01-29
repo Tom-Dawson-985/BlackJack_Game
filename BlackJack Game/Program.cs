@@ -1,9 +1,10 @@
 ﻿namespace BlackJack_Game;
-
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Player p1 = new Player("Tom", 10000);
+        
+        
     }
 }
