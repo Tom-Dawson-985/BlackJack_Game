@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack Game", "BlackJack Game\BlackJack Game.csproj", "{45733146-085D-4E99-ADB7-7D2BD0D8C7DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45733146-085D-4E99-ADB7-7D2BD0D8C7DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45733146-085D-4E99-ADB7-7D2BD0D8C7DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45733146-085D-4E99-ADB7-7D2BD0D8C7DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45733146-085D-4E99-ADB7-7D2BD0D8C7DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
