@@ -1,5 +1,3 @@
-using System.Threading.Channels;
-
 namespace BlackJack_Game;
 public class Cards
 {
@@ -7,19 +5,18 @@ public class Cards
     string[] _freshDeck  = new string[] {"1","2","3","4","5","6","7","8","9","10","J","Q","K","A"};
     
     // the deck that is used when playing
-    public HashSet<string> deckOfCards = new HashSet<string>() {"1","2","3","4","5","6","7","8","9","10","J","Q","K","A"};
+    public HashSet<string> DeckOfCards = new HashSet<string>() {"1","2","3","4","5","6","7","8","9","10","J","Q","K","A"};
 
     public void NewGame() // triggered at the end of a round, adds all cards back to the deck
     {
-        foreach (var card in deckOfCards) // empty the set
+        foreach (string card in DeckOfCards) // empty the set
         {
-            deckOfCards.Remove(card);
+            DeckOfCards.Remove(card);
         }
 
         foreach (string card in _freshDeck) // restore the cards
         {
-            deckOfCards.Add(card);
+            DeckOfCards.Add(card);
         }
-            
     }
 }
