@@ -9,7 +9,5 @@ internal class Cards
         10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10
     };
     
-    
-}
-
+    // fuck harry duff
 }
