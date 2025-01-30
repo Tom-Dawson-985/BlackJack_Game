@@ -7,7 +7,7 @@ class Program
     static void Main(string[] args)
     {
         
-        bool Play_Again = true;                                                                                         // bool so roudns can be iterated
+        bool playAgain = true;                                                                                         // bool so roudns can be iterated
         Console.WriteLine("Welcome to BlackJack! \n what is player 1s name");                                           // just asks
         string playername = Console.ReadLine();                                                                         // reads the answer
         Player p1 = new Player(playername, 10000);                                                            // makes a new Player class
@@ -31,7 +31,7 @@ class Program
         // create game function here while (Play_Again)
         
         
-        while (Play_Again == true)                                                                                      // If end game isn't selected a new round will begin
+        while (playAgain == true)                                                                                       // If end game isn't selected a new round will begin
         {
             
             Console.WriteLine();
