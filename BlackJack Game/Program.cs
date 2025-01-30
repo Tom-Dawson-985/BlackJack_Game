@@ -2,10 +2,6 @@
 namespace BlackJack_Game;
 using System;
 
-
-
- 
-
 class Program
 {
     static void Main(string[] args)
