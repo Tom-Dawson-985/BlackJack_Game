@@ -32,6 +32,9 @@ class Program
         }
         
         
+        // create game function here while (Play_Again)
+        //but i have no idea how to do that 
+        
         Console.WriteLine(p1.BreadCheck());
         Console.WriteLine(p1.SetBet());
         Console.WriteLine(p1.BreadCheck());
