@@ -5,5 +5,7 @@ class Program
     {
         Player p1 = new Player("Tom", 10000);
         Console.WriteLine(p1.BreadCheck());
+        Console.WriteLine(p1.SetBet());
+        Console.WriteLine(p1.BreadCheck());
     }
 }

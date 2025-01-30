@@ -9,6 +9,15 @@ public class Player
     }
     
     // properties
+    /*
+     List of all properties:
+     - Name
+     - Money
+     - Players Cards
+     - ****** Need to add current bet property *******
+     - ****** Need to add win streak property *******
+     */
+    
     string Name {get; set;}// the name of the player
 
     private int Money { get; set; } // how much money the player has
@@ -72,5 +81,14 @@ public class Player
     public string BreadCheck() // how much money the player has left
     {
         return $"{this.Name} has {this.Money} left";
+    }
+
+    public int SetBet()
+    {
+        Console.WriteLine("Enter the amount you would like to bet: ");
+        int betAmount = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine($"{this.Name} bets {betAmount}.");
+        return betAmount;
+        (this.Money) = (this.Money) - betAmount;
     }
 }
