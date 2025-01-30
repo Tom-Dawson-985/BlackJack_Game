@@ -19,8 +19,6 @@ public class Cards
         
         int Card = _cardSet[CardNumber];
 
-        
-
     }
     
     
