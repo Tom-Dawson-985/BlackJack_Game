@@ -5,17 +5,14 @@ namespace BlackJack_Game;
 
 public class Cards
 {
-
-    public int[] _cardSet =
-    {
-        1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10,
-        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10
-    };
+    private int[] _cardSet = new int[] {1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10,
+        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11};
+    
 
     public void GetCard()
     {
         Random rnd = new Random();
-        int CardNumber = rnd.Next(1, 101);
+        int CardNumber = rnd.Next(0, 51);
         
         int Card = _cardSet[CardNumber];
 
