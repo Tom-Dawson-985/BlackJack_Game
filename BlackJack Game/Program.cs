@@ -30,11 +30,24 @@ class Program
         
         // create game function here while (Play_Again)
         
-        
+        /*
         while (playAgain == true)                                                                                       // If end game isn't selected a new round will begin
         {
             
             Console.WriteLine();
         }
+        */
+        
+        
+        
+        
+        // Example bet process ========================================================================
+        Console.WriteLine($"You have {p1.Money} \n Enter Your Bet amount:");
+        int tempBet = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine(p1.PlayerBet(tempBet));
+        
+        
+        
+        
     }
 }
