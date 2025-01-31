@@ -6,25 +6,70 @@ class Program
 {
     static void Main(string[] args)
     {
+        // Welcome message =============================================================================================
         
-        bool playAgain = true;                                                                                         // bool so roudns can be iterated
-        Console.WriteLine("Welcome to BlackJack! \n what is player 1s name");                                           // just asks
-        string playername = Console.ReadLine();                                                                         // reads the answer
-        Player p1 = new Player(playername, 10000);                                                            // makes a new Player class
+        Console.WriteLine("" +
+        "\nThe Rules:  " +
+        "\n1. Each player places a bet" +
+        "\n2. The dealer gives each player 2 cards" +
+        "\n3. The dealer gives themself one card that is revealed and one card that is hidden" +
+        "\n4. player decide whether to hit or stand" +
+        "\n\n\t(hit means a player gets another card)" +
+        "\n\n\t(stand means the player keeps their current cards)" +
+        "\n\n5. The dealer decides whether to hit" +
+        "\n6. if the player total is more than 21 they have gone bust and lose " +
+        "\n7. if the dealers hand goes over 21 all remaining players win" +
+        "\n8. if neither the player nor the dealer busts, the highest total wins \n (scroll down)\n\n");
         
+        bool playAgain = true; // Creates a Bool that will be used to end the game later                                                                                 
         
-        // this is checking if there is a player 2 if so it gets their name and creates a new player
-        Console.WriteLine($"Hello{playername} is there a player 2 please enter their name if not press enter  ");       // checks for player 2
-        string Player2Name = Console.ReadLine();                                                                        // asks for input
+        // This sets up the First player Class, Giving it a name chosen by the user.
+
+        Console.Write("Welcome to BlackJack! \n Enter your Name: ");        // ask for inputs
+            string playername = Console.ReadLine();                         // Reads the input and stores as playername                                                 
+                Player p1 = new Player(playername, 10000);        // Creates a Player Class
         
-        if (!string.IsNullOrWhiteSpace(Player2Name))                                                                    // if the player enters anything
+        // EXPLANATION
+        // - If a new players name is entered a while loop will begin
+        // - The while repeats the adding process, so as many players as needed can be added
+        // - for every new player the play counter will increase by 1
+        // - the player counter will be used later to iterate through sequences in each round
+        
+        int numberOfPlayers = 1; // This is the player counter
+        
+        Console.WriteLine($"\nHello, {playername}!" +
+                          $"\n To add another player input their name below (you can add up to 4 players." + // asks the user to add any other players
+                          $"\n To play alone just press 'ENTER'" +
+                          $"/n INPUT HERE: ");
+        string newPlayerName = Console.ReadLine();
+        
+        if (!string.IsNullOrWhiteSpace(newPlayerName)) // if the input is not empty start the loop                                                   // if the player enters anything
         {
-            Console.WriteLine($"Hello{playername} \n its time to play the game");                                       // Game starts and message is displayed
-            Player p2 = new Player(Player2Name, 10000);                                                       // new player class is created and initialised
+            while (!string.IsNullOrWhiteSpace(newPlayerName)) // every time a name is given
+            {
+                string formattedName = $"p{numberOfPlayers}"; // creates a p1, p2, p3 name for the new player
+                numberOfPlayers++; // adds a new player to counter
+                if (numberOfPlayers)
+                {
+                    Player [numberOfPlayers] = new Player(newPlayerName, 10000); // creates a player called p2 (then p3 etc)
+                }
+
+                
+                // now that the new player has been made we need to ask for a new one
+
+                Console.WriteLine($"Hello{newPlayerName}!" + // says hello to the NEW player
+                                  $"\nTo add another player input their name below." +
+                                  $"\nTo play with the current players just press 'ENTER'" +
+                                  $"\nINPUT HERE: ");
+                newPlayerName = Console.ReadLine(); // resets the newPlayerName so that either a new player or a continue is added
+            } 
+            Console.WriteLine("You just pressed 'ENTER'! " +
+                              "\nTime to Play!");   
         }
         else                                                                                                            // if the play just hits enter
         {
-            Console.WriteLine("You just pressed Enter! \n lets play");                                                  // A new round starts
+            Console.WriteLine("You just pressed 'ENTER'! " +
+                              "\nTime to Play!\n\n");                                                // A new round starts
         }
         
         
