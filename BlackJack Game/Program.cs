@@ -49,10 +49,9 @@ class Program
             {
                 string formattedName = $"p{numberOfPlayers}"; // creates a p1, p2, p3 name for the new player
                 numberOfPlayers++; // adds a new player to counter
-                if (numberOfPlayers)
-                {
-                    Player [numberOfPlayers] = new Player(newPlayerName, 10000); // creates a player called p2 (then p3 etc)
-                }
+                
+                Player [numberOfPlayers] = new Player(newPlayerName, 10000); // creates a player called p2 (then p3 etc)
+                
 
                 
                 // now that the new player has been made we need to ask for a new one
