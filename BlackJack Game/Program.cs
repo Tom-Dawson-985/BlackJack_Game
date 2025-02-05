@@ -7,6 +7,7 @@ class Program
     static void Main(string[] args)
     {
         
+        
 
         
         // create all the objects
@@ -95,18 +96,35 @@ class Program
                 PlayerDrawsCards();
                 Console.WriteLine($"Your total is: {player.GetCardTotal()}");
             }
+            
+            if (dealer.dealerlog() == 1)
+            {
+                DealerDrawsCards();
+                dealer.GetCardTotal();
+
+            }
+
+            if 
+            {
+            }
+                
         }
 
         void CheckWinner()
         {
-            if (player.GetCardTotal() > dealer.GetCardTotal() && player.GetCardTotal() < 21)
+            if (player.GetCardTotal() > dealer.GetCardTotal() && player.GetCardTotal() < 21 && (dealer.GetCardTotal() > 21))
             {
                 Console.WriteLine($"You won {playerBet * 2}");
                 player.TotalMoney += playerBet * 2;
                 Console.WriteLine($"You now have: {player.TotalMoney}");
             }
+
+            if (dealer.GetCardTotal() > 21 && (player.GetCardTotal() > 21))
+            {
+                Console.WriteLine($"You won {playerBet * 2}");
+            }
             
         }
-    }
+        
     }
 }

@@ -7,6 +7,7 @@ public class Dealer
         CurrentCards = new HashSet<int>();
     }
     
+    
     // properties
     public HashSet<int> CurrentCards { get; set; }
     
@@ -19,6 +20,17 @@ public class Dealer
         }
     }
 
+    public int dealerlog()
+    {
+        if (ReturnCardTotal() >= 17)
+        {
+            return ReturnCardTotal();
+        }
+        else
+        {
+            return 1;
+        }
+    }
     public int ReturnCardTotal()
     {
         int total = 0;
