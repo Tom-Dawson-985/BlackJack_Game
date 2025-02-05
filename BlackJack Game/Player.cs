@@ -18,6 +18,8 @@ public class Player
 
     public HashSet<int> CurrentCards { get; set; }
 
+    public bool PlayerStand { get; set; }
+
 
     // methods
     public void PrintCards()
@@ -45,4 +47,9 @@ public class Player
         }
         return cardTotal;
     }
+
+    /*public void Clearatron3000()
+    {
+        CurrentCards.Clear();
+    }*/
 }

@@ -63,4 +63,8 @@ public class Dealer
         }
         return cardTotal;
     }
+    /*public void Clearatron3000()
+    {
+        CurrentCards.Clear();
+    }*/
 }
