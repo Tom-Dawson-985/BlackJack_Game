@@ -4,50 +4,45 @@ namespace BlackJack_Game;
 
 public class Player
 {
-    // constructor method
-    public Player(string name, int startMoney) // each player gets a name and a starting amount of money
+    // Constructor Variable
+    public Player(string name)
     {
-        Money = startMoney;
-        Name = name;
+        PlayerName = name;
+        TotalMoney = 100000;
+        CurrentCards = new HashSet<int>();
     }
 
-    // Constructor Method =============================================================================================
+    // properties 
+    public string PlayerName { get; set; }
+    public int TotalMoney { get; set; }
 
-    // Properties =====================================================================================================
-    public int Money { get; set; }
-    public string Name { get; set; }
-    public List<int> PlayerCards { get; set; } = new List<int>();
+    public HashSet<int> CurrentCards { get; set; }
 
-    public int WinStreak { get; set; }
-    // Methods ========================================================================================================
-    /* methods that we need:
-            - Bet
-            - GetCard
-            - BUST!!!!!
-     */
 
-    public int PlayerBet(int betAmount)
+    // methods
+    public void PrintCards()
     {
-        bool betWork = false;
-        while (betWork == false)
+        foreach (int i in CurrentCards!)
         {
-            if (betAmount > 0 && betAmount <= Money)
-            {
-                this.Money -= betAmount;
-                betWork = true;
-                return betAmount;
-            }
-            else if (betAmount > Money)
-            {
-                Console.WriteLine("FUCKKKK YOUUUUUU you big (poor, impoverished) fat bastard ");
-            }
-            else if (betAmount < 0)
-            {
-                Console.WriteLine("entere a real value u idiot");
-            }
-
-            
+            Console.Write($"{i} ");
         }
-        return 0;
+    }
+
+    // return the total of the player cards
+    public int GetCardTotal()
+    {
+        int cardTotal = 0;
+        foreach (int card in CurrentCards)
+        {
+            if (card == 11)
+            {
+                cardTotal++;
+            }
+            else
+            {
+                cardTotal += card;
+            }
+        }
+        return cardTotal;
     }
 }
