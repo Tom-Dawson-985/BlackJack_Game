@@ -1,18 +1,54 @@
 namespace BlackJack_Game;
 public class Dealer
 {
-    //properties
-    private HashSet<string> _dealerCards = new HashSet<string>(); // the cards that the dealer has
+    // constructor method
+    public Dealer()
+    {
+        CurrentCards = new HashSet<int>();
+    }
     
-    /*methord (to do )
+    // properties
+    public HashSet<int> CurrentCards { get; set; }
     
-    if card > 17 :
-    stand 
+    // Methods
+    public void PrintCards()
+    {
+        foreach (int i in CurrentCards!)
+        {
+            Console.Write($"{i} ");
+        }
+    }
+
+    public int ReturnCardTotal()
+    {
+        int total = 0;
+        // Looping through the HashSet using foreach
+        foreach (int number in CurrentCards)
+        {
+            Console.WriteLine(number);
+        }
+        return total;
+    }
     
-    if card < 21 : 
-    plays who havent bust win 
-    
-    
-    
-    */
+    public void DrawCard(int cardFromDeck)
+    {
+        CurrentCards.Add(cardFromDeck);
+    }
+
+    public int GetCardTotal()
+    {
+        int cardTotal = 0;
+        foreach (int card in CurrentCards)
+        {
+            if (card == 11)
+            {
+                cardTotal++;
+            }
+            else
+            {
+                cardTotal += card;
+            }
+        }
+        return cardTotal;
+    }
 }

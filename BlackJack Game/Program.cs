@@ -6,92 +6,107 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Welcome message =============================================================================================
         
-        Console.WriteLine("" +
-        "\nThe Rules:  " +
-        "\n1. Each player places a bet" +
-        "\n2. The dealer gives each player 2 cards" +
-        "\n3. The dealer gives themself one card that is revealed and one card that is hidden" +
-        "\n4. player decide whether to hit or stand" +
-        "\n\n\t(hit means a player gets another card)" +
-        "\n\n\t(stand means the player keeps their current cards)" +
-        "\n\n5. The dealer decides whether to hit" +
-        "\n6. if the player total is more than 21 they have gone bust and lose " +
-        "\n7. if the dealers hand goes over 21 all remaining players win" +
-        "\n8. if neither the player nor the dealer busts, the highest total wins \n (scroll down)\n\n");
-        
-        bool playAgain = true; // Creates a Bool that will be used to end the game later                                                                                 
-        
-        // This sets up the First player Class, Giving it a name chosen by the user.
 
-        Console.Write("Welcome to BlackJack! \n Enter your Name: ");        // ask for inputs
-            string playername = Console.ReadLine();                         // Reads the input and stores as playername                                                 
-                Player p1 = new Player(playername, 10000);        // Creates a Player Class
         
-        // EXPLANATION
-        // - If a new players name is entered a while loop will begin
-        // - The while repeats the adding process, so as many players as needed can be added
-        // - for every new player the play counter will increase by 1
-        // - the player counter will be used later to iterate through sequences in each round
+        // create all the objects
+        Player player = new Player("Tom");
+        Dealer dealer = new Dealer();
+        Deck deck = new Deck();
+        // create all variables
+        int playerBet = 0;
         
-        int numberOfPlayers = 1; // This is the player counter
-        
-        Console.WriteLine($"\nHello, {playername}!" +
-                          $"\n To add another player input their name below (you can add up to 4 players." + // asks the user to add any other players
-                          $"\n To play alone just press 'ENTER'" +
-                          $"/n INPUT HERE: ");
-        string newPlayerName = Console.ReadLine();
-        
-        if (!string.IsNullOrWhiteSpace(newPlayerName)) // if the input is not empty start the loop                                                   // if the player enters anything
+        // welcome
+        Console.WriteLine($"Welcome to Blackjack {player.PlayerName}");
+        NewGameAndFirstRound();
+
+        void PlayerDrawsCards()
         {
-            while (!string.IsNullOrWhiteSpace(newPlayerName)) // every time a name is given
+            Random rnd = new Random();
+            int cardNumber = rnd.Next(0, 51);
+            
+            while (deck.CurrentDeck[cardNumber] == 0)
             {
-                string formattedName = $"p{numberOfPlayers}"; // creates a p1, p2, p3 name for the new player
-                numberOfPlayers++; // adds a new player to counter
-                
-                Player [numberOfPlayers] = new Player(newPlayerName, 10000); // creates a player called p2 (then p3 etc)
-                
-
-                
-                // now that the new player has been made we need to ask for a new one
-
-                Console.WriteLine($"Hello{newPlayerName}!" + // says hello to the NEW player
-                                  $"\nTo add another player input their name below." +
-                                  $"\nTo play with the current players just press 'ENTER'" +
-                                  $"\nINPUT HERE: ");
-                newPlayerName = Console.ReadLine(); // resets the newPlayerName so that either a new player or a continue is added
-            } 
-            Console.WriteLine("You just pressed 'ENTER'! " +
-                              "\nTime to Play!");   
+                player.CurrentCards.Add(deck.CurrentDeck[cardNumber]);
+                deck.CurrentDeck[cardNumber] = 0;
+            }
+            player.CurrentCards.Add(deck.CurrentDeck[cardNumber]);
+            deck.CurrentDeck[cardNumber] = 0;
         }
-        else                                                                                                            // if the play just hits enter
+
+        void DealerDrawsCards()
         {
-            Console.WriteLine("You just pressed 'ENTER'! " +
-                              "\nTime to Play!\n\n");                                                // A new round starts
+            Random rnd = new Random();
+            int cardNumber = rnd.Next(0, 51);
+            
+            while (deck.CurrentDeck[cardNumber] == 0)
+            {
+                dealer.CurrentCards.Add(deck.CurrentDeck[cardNumber]);
+                deck.CurrentDeck[cardNumber] = 0;
+            }
+            dealer.CurrentCards.Add(deck.CurrentDeck[cardNumber]);
+            deck.CurrentDeck[cardNumber] = 0;
         }
         
+        void DealerBj()
+        {
+            Console.WriteLine("Dealer has BlackJack");
+            player.TotalMoney -=playerBet;
+            Console.WriteLine($"You have lost {playerBet}, you have {player.TotalMoney} left");
+        }
         
-        // create game function here while (Play_Again)
-        
-        /*
-        while (playAgain == true)                                                                                       // If end game isn't selected a new round will begin
+        void NewGameAndFirstRound()
         {
             
-            Console.WriteLine();
+            // get the player bet
+            Console.Write($"{player.PlayerName}, you have {player.TotalMoney}, Enter your bet for the next round: ");
+            int playerBet = Convert.ToInt32(Console.ReadLine());
+            
+            PlayerDrawsCards();
+            PlayerDrawsCards();
+            DealerDrawsCards();
+            DealerDrawsCards();
+            
+            
+            if (dealer.GetCardTotal() == 21)
+            {
+                DealerBj();
+            }
+            
+            Console.WriteLine($"{player.PlayerName} your total is : {player.GetCardTotal()}\nThe dealers total is: {dealer.GetCardTotal()}");
+            Console.WriteLine("Enter 1 to hit\nEnter 2 to stand\nEnter 3 to Double");
+            int playerInput = Convert.ToInt32(Console.ReadLine());
+            if (playerInput == 1)
+            {
+                PlayerDrawsCards();
+                Console.WriteLine($"Your total is: {player.GetCardTotal()}");
+            }
+
+            if (playerInput == 3 &&  playerBet*2 < player.TotalMoney)
+            {
+                playerBet  = playerBet * 2;
+                PlayerDrawsCards();
+                Console.WriteLine($"Your total is: {player.GetCardTotal()}");
+                
+            }
+            else if (playerInput == 3)
+            {
+                Console.WriteLine("You cant afford to double, instead hit");
+                PlayerDrawsCards();
+                Console.WriteLine($"Your total is: {player.GetCardTotal()}");
+            }
         }
-        */
-        
-        
-        
-        
-        // Example bet process ========================================================================
-        Console.WriteLine($"You have {p1.Money} \n Enter Your Bet amount:");
-        int tempBet = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine(p1.PlayerBet(tempBet));
-        
-        
-        
-        
+
+        void CheckWinner()
+        {
+            if (player.GetCardTotal() > dealer.GetCardTotal() && player.GetCardTotal() < 21)
+            {
+                Console.WriteLine($"You won {playerBet * 2}");
+                player.TotalMoney += playerBet * 2;
+                Console.WriteLine($"You now have: {player.TotalMoney}");
+            }
+            
+        }
+    }
     }
 }
