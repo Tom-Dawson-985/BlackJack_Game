@@ -6,8 +6,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        
-        List<Player> players = new List<Player>(); // this is a list opf all players names 
         // Welcome message =============================================================================================
         
         Console.WriteLine("" +
@@ -52,15 +50,7 @@ class Program
                 string formattedName = $"p{numberOfPlayers}"; // creates a p1, p2, p3 name for the new player
                 numberOfPlayers++; // adds a new player to counter
                 
-
-                // Create 5 players dynamically
-                for (int i = 1; i <= 5; i++)
-                {
-                    
-                    Player newPlayer = new Player(newPlayerName);
-                    players.Add(newPlayer);
-                }
-               //  Player (numberOfPlayers) = new Player(newPlayerName, 10000); // creates a player called p2 (then p3 etc)
+                Player [numberOfPlayers] = new Player(newPlayerName, 10000); // creates a player called p2 (then p3 etc)
                 
 
                 
