@@ -52,7 +52,6 @@ class Program
                 string formattedName = $"p{numberOfPlayers}"; // creates a p1, p2, p3 name for the new player
                 numberOfPlayers++; // adds a new player to counter
                 
-                
 
                 // Create 5 players dynamically
                 for (int i = 1; i <= 5; i++)
